@@ -271,6 +271,17 @@ const authenticatePassword = async (identifier, password) => {
 };
 
 /**
+ * Resolve Google OAuth 2.0 callback URL
+ */
+const getGoogleCallbackUrl = () => {
+  if (process.env.GOOGLE_CALLBACK_URL) {
+    return process.env.GOOGLE_CALLBACK_URL;
+  }
+  const backendBase = (process.env.BACKEND_URL || 'http://localhost:5000').replace(/\/+$/, '');
+  return `${backendBase}/api/v1/auth/google/callback`;
+};
+
+/**
  * Generate Google OAuth 2.0 URL
  */
 const getGoogleAuthUrl = () => {
@@ -283,7 +294,7 @@ const getGoogleAuthUrl = () => {
 
   const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
   const options = {
-    redirect_uri: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:5000/api/v1/auth/google/callback',
+    redirect_uri: getGoogleCallbackUrl(),
     client_id: process.env.GOOGLE_CLIENT_ID,
     access_type: 'offline',
     response_type: 'code',
@@ -309,7 +320,7 @@ const handleGoogleCallback = async (code) => {
     };
   }
 
-  const redirectUri = process.env.GOOGLE_CALLBACK_URL || 'http://localhost:5000/api/v1/auth/google/callback';
+  const redirectUri = getGoogleCallbackUrl();
 
   // 1. Exchange authorization code for access token
   const tokenUrl = 'https://oauth2.googleapis.com/token';
