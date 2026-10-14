@@ -14,33 +14,23 @@ export const PublicHeader = ({ showBack = false, backUrl = '/' }) => {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-100 transition-all">
-      <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
-        {/* Left Slot: Back Button or Catalog Navigation */}
-        <div className="w-24 sm:w-44 flex items-center justify-start flex-shrink-0">
-          {showBack ? (
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
+        {/* Left Side: Brand Element (Logo + Brand Name, with optional Back button on detail pages) */}
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+          {showBack && (
             <Link
               to={backUrl}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-600 hover:text-neutral-950 uppercase tracking-wider transition-colors py-1.5 px-2 -ml-2 rounded-lg hover:bg-neutral-100/80 group"
+              className="inline-flex items-center justify-center p-1.5 -ml-1 text-neutral-600 hover:text-neutral-950 rounded-lg hover:bg-neutral-100 transition-colors flex-shrink-0"
               aria-label="Back to collections"
+              title="Back to collections"
             >
-              <ArrowLeft className="w-4 h-4 flex-shrink-0 transition-transform group-hover:-translate-x-0.5" />
-              <span className="hidden sm:inline">Collections</span>
-            </Link>
-          ) : (
-            <Link
-              to="/"
-              className="inline-flex items-center gap-1 text-[11px] uppercase tracking-widest font-semibold text-neutral-500 hover:text-neutral-950 transition-colors py-1 px-2 -ml-2 rounded-lg hover:bg-neutral-100/60"
-            >
-              <span>Catalog</span>
+              <ArrowLeft className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
             </Link>
           )}
-        </div>
 
-        {/* Center Slot: Brand Lockup (Always Centered) */}
-        <div className="flex-1 flex items-center justify-center min-w-0 px-2">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 sm:gap-2.5 group select-none transition-opacity hover:opacity-85"
+            className="inline-flex items-center gap-2 sm:gap-2.5 group select-none transition-opacity hover:opacity-85 min-w-0"
             aria-label="Prince Digital Home"
           >
             <img
@@ -54,14 +44,14 @@ export const PublicHeader = ({ showBack = false, backUrl = '/' }) => {
           </Link>
         </div>
 
-        {/* Right Slot: Auth Navigation (Sign Up / Sign In / Account / Logout) */}
-        <div className="w-24 sm:w-44 flex items-center justify-end gap-1.5 sm:gap-2 flex-shrink-0">
+        {/* Right Side: Auth Navigation (Sign Up / Sign In / Account / Logout) */}
+        <div className="flex items-center justify-end gap-1.5 sm:gap-2 flex-shrink-0">
           {!isAuthenticated ? (
             <>
               {/* Unobtrusive Sign In Link */}
               <Link
                 to="/login"
-                className="hidden sm:inline-flex items-center text-[11px] uppercase tracking-wider font-semibold text-neutral-600 hover:text-neutral-950 py-1.5 px-2 rounded-lg hover:bg-neutral-100/80 transition-colors"
+                className="inline-flex items-center text-[11px] sm:text-xs uppercase tracking-wider font-semibold text-neutral-600 hover:text-neutral-950 py-1.5 px-2 rounded-lg hover:bg-neutral-100/80 transition-colors"
               >
                 Sign In
               </Link>
