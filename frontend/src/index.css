@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  body {
+    @apply bg-white text-neutral-900 font-sans antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Luxury wordmark letterspacing and style */
+  .brand-wordmark {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .brand-subheading {
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fbfbfb;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
