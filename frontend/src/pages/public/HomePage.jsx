@@ -7,7 +7,7 @@ import { SearchBar } from '../../components/public/SearchBar';
 import { LoadingState } from '../../components/common/LoadingState';
 import { EmptyState } from '../../components/common/EmptyState';
 import { ErrorState } from '../../components/common/ErrorState';
-import { Sparkles, ShoppingBag, Search } from 'lucide-react';
+import { ShoppingBag, Search } from 'lucide-react';
 
 export const HomePage = () => {
   const [collections, setCollections] = useState([]);
@@ -58,22 +58,13 @@ export const HomePage = () => {
       <PublicHeader />
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 md:py-12">
-        {/* Brand Hero & Tagline */}
-        <section className="text-center max-w-xl mx-auto mb-8 sm:mb-12 px-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 text-[11px] font-semibold uppercase tracking-widest mb-3 sm:mb-4">
-            <Sparkles className="w-3 h-3 text-neutral-800" />
-            <span>Curated Catalog</span>
-          </div>
-
+        {/* Brand Hero */}
+        <section className="text-center max-w-xl mx-auto mb-6 sm:mb-8 px-2">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-950 font-serif">
             Discover Products.
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl font-light text-neutral-500 mt-1 font-serif italic">
+          <p className="text-base sm:text-lg md:text-xl text-neutral-500 mt-1.5 font-serif italic">
             Shop your favourites.
-          </p>
-
-          <p className="text-xs sm:text-sm text-neutral-600 mt-3 font-normal max-w-xs sm:max-w-md mx-auto leading-relaxed">
-            Browse our curated seasonal collections. Tap any collection below to explore verified product links.
           </p>
         </section>
 
