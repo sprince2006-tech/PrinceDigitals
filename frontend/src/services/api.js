@@ -3,8 +3,17 @@
  * Handles HTTP-only cookie credentials and Authorization Bearer fallback.
  */
 
-const RAW_API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api/v1';
-const API_BASE_URL = RAW_API_BASE_URL.replace(/\/+$/, '');
+const RAW_API_BASE_URL = (
+  import.meta.env.VITE_API_URL ||
+  import.meta.env.VITE_API_BASE_URL ||
+  'http://localhost:5000/api/v1'
+).trim();
+
+// Normalize URL: remove any trailing slashes
+const cleanUrl = RAW_API_BASE_URL.replace(/\/+$/, '');
+
+// Ensure /api/v1 is appended if missing, without duplication
+const API_BASE_URL = cleanUrl.endsWith('/api/v1') ? cleanUrl : `${cleanUrl}/api/v1`;
 
 // Token storage key for Safari / cross-domain third-party cookie restrictions
 const TOKEN_STORAGE_KEY = 'prince_auth_token';
