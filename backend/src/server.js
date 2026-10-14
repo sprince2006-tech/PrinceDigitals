@@ -8,9 +8,7 @@ const HOST = '0.0.0.0';
 let server;
 
 const startServer = async () => {
-  // Connect to MongoDB
-  await connectDB();
-
+  // 1. Bind to port immediately so Render/cloud health checks pass without delay
   server = app.listen(PORT, HOST, () => {
     console.log(`
 ======================================================
@@ -21,6 +19,13 @@ const startServer = async () => {
 ======================================================
     `);
   });
+
+  // 2. Establish MongoDB Atlas connection
+  try {
+    await connectDB();
+  } catch (err) {
+    console.error('Failed to establish initial MongoDB connection:', err.message);
+  }
 };
 
 // Handle process termination gracefully
