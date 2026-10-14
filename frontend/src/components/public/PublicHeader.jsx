@@ -14,9 +14,9 @@ export const PublicHeader = ({ showBack = false, backUrl = '/' }) => {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-100 transition-all">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
         {/* Left Side: Brand Element (Logo + Brand Name, with optional Back button on detail pages) */}
-        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+        <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
           {showBack && (
             <Link
               to={backUrl}
@@ -30,7 +30,7 @@ export const PublicHeader = ({ showBack = false, backUrl = '/' }) => {
 
           <Link
             to="/"
-            className="inline-flex items-center gap-2 sm:gap-2.5 group select-none transition-opacity hover:opacity-85 min-w-0"
+            className="inline-flex items-center gap-1.5 sm:gap-2.5 group select-none transition-opacity hover:opacity-85 min-w-0"
             aria-label="Prince Digital Home"
           >
             <img
@@ -38,7 +38,7 @@ export const PublicHeader = ({ showBack = false, backUrl = '/' }) => {
               alt="Prince Digital Logo"
               className="h-6 sm:h-7 md:h-8 w-auto object-contain flex-shrink-0 transition-transform duration-200 group-hover:scale-105"
             />
-            <span className="font-serif font-bold text-xs sm:text-base md:text-lg tracking-[0.12em] sm:tracking-[0.18em] text-neutral-950 uppercase whitespace-nowrap">
+            <span className="font-serif font-bold text-[11px] sm:text-base md:text-lg tracking-[0.10em] sm:tracking-[0.18em] text-neutral-950 uppercase whitespace-nowrap">
               PRINCE DIGITAL
             </span>
           </Link>

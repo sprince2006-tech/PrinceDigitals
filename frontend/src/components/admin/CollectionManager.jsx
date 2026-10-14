@@ -154,57 +154,59 @@ export const CollectionManager = ({
               </div>
 
               {/* Actions */}
-              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 self-start sm:self-center w-full sm:w-auto justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-neutral-100">
+              <div className="flex items-center justify-between sm:justify-end gap-1.5 sm:gap-2 w-full sm:w-auto pt-2.5 sm:pt-0 border-t sm:border-t-0 border-neutral-100 flex-wrap">
                 {/* Manage Products Link */}
                 <Link
                   to={`/admin/collections/${collection._id}/products`}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-800 bg-neutral-100 hover:bg-neutral-200 rounded-lg transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-800 bg-neutral-100 hover:bg-neutral-200 rounded-lg transition-colors flex-shrink-0"
                 >
                   <ShoppingBag className="w-3.5 h-3.5" />
                   <span>Products</span>
                 </Link>
 
-                {/* Publish Toggle Button */}
-                {onTogglePublish && (
+                <div className="flex items-center gap-1 flex-shrink-0">
+                  {/* Publish Toggle Button */}
+                  {onTogglePublish && (
+                    <button
+                      onClick={() => onTogglePublish(collection._id, !collection.isPublished)}
+                      className="p-1.5 text-neutral-500 hover:text-neutral-900 rounded-md hover:bg-neutral-100"
+                      title={collection.isPublished ? 'Unpublish collection' : 'Publish collection'}
+                    >
+                      {collection.isPublished ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                  )}
+
+                  {/* View on live site */}
+                  {collection.isPublished && (
+                    <a
+                      href={`/collection/${collection.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1.5 text-neutral-500 hover:text-neutral-900 rounded-md hover:bg-neutral-100"
+                      title="View live"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
+
+                  {/* Edit */}
+                  <Link
+                    to={`/admin/collections/${collection._id}/edit`}
+                    className="p-1.5 text-neutral-600 hover:text-neutral-900 rounded-md hover:bg-neutral-100"
+                    title="Edit collection"
+                  >
+                    <Edit className="w-4 h-4" />
+                  </Link>
+
+                  {/* Delete */}
                   <button
-                    onClick={() => onTogglePublish(collection._id, !collection.isPublished)}
-                    className="p-1.5 text-neutral-500 hover:text-neutral-900 rounded-md hover:bg-neutral-100"
-                    title={collection.isPublished ? 'Unpublish collection' : 'Publish collection'}
+                    onClick={() => setDeleteTarget(collection)}
+                    className="p-1.5 text-rose-500 hover:text-rose-700 rounded-md hover:bg-rose-50"
+                    title="Delete collection"
                   >
-                    {collection.isPublished ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    <Trash2 className="w-4 h-4" />
                   </button>
-                )}
-
-                {/* View on live site */}
-                {collection.isPublished && (
-                  <a
-                    href={`/collection/${collection.slug}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-1.5 text-neutral-500 hover:text-neutral-900 rounded-md hover:bg-neutral-100"
-                    title="View live"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                )}
-
-                {/* Edit */}
-                <Link
-                  to={`/admin/collections/${collection._id}/edit`}
-                  className="p-1.5 text-neutral-600 hover:text-neutral-900 rounded-md hover:bg-neutral-100"
-                  title="Edit collection"
-                >
-                  <Edit className="w-4 h-4" />
-                </Link>
-
-                {/* Delete */}
-                <button
-                  onClick={() => setDeleteTarget(collection)}
-                  className="p-1.5 text-rose-500 hover:text-rose-700 rounded-md hover:bg-rose-50"
-                  title="Delete collection"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
+                </div>
               </div>
             </div>
           );

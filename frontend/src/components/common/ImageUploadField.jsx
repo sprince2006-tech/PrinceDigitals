@@ -92,7 +92,7 @@ export const ImageUploadField = ({
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        className={`relative cursor-pointer border-2 border-dashed rounded-xl overflow-hidden transition-all duration-200 flex flex-col items-center justify-center p-4 min-h-[180px] bg-neutral-50/50 hover:bg-neutral-50 ${
+        className={`relative cursor-pointer border-2 border-dashed rounded-xl overflow-hidden transition-all duration-200 flex flex-col items-center justify-center p-3 sm:p-4 min-h-[160px] sm:min-h-[180px] bg-neutral-50/50 hover:bg-neutral-50 ${
           isDragging ? 'border-neutral-900 bg-neutral-100' : 'border-neutral-300'
         } ${displayUrl ? 'border-solid' : ''}`}
       >
@@ -106,11 +106,11 @@ export const ImageUploadField = ({
 
         {displayUrl ? (
           <div className="relative w-full flex flex-col items-center">
-            <div className="relative max-h-56 w-auto rounded-lg overflow-hidden border border-neutral-200 shadow-sm bg-white">
+            <div className="relative max-h-48 sm:max-h-56 w-auto max-w-full rounded-lg overflow-hidden border border-neutral-200 shadow-sm bg-white">
               <img
                 src={displayUrl}
                 alt="Upload preview"
-                className="max-h-56 object-cover rounded-lg"
+                className="max-h-48 sm:max-h-56 w-auto max-w-full object-contain rounded-lg"
               />
               <button
                 type="button"

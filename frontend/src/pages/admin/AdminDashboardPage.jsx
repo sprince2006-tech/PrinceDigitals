@@ -162,7 +162,7 @@ export const AdminDashboardPage = () => {
               No collections found. Click "Add Collection" to get started.
             </div>
           ) : (
-            <div className="divide-y divide-neutral-100 max-h-[250px] sm:max-h-[300px] md:max-h-[320px] overflow-y-auto overscroll-contain pr-1 sm:pr-2">
+            <div className="divide-y divide-neutral-100 max-h-none md:max-h-[360px] md:overflow-y-auto overscroll-contain pr-0 md:pr-2">
               {data.recentCollections.map((col) => (
                 <div
                   key={col._id}
@@ -186,7 +186,7 @@ export const AdminDashboardPage = () => {
                   </div>
 
                   {/* Right: Status badge & Products button */}
-                  <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 self-start sm:self-center pl-13 sm:pl-0">
+                  <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 self-start sm:self-center mt-1 sm:mt-0">
                     <span
                       className={`px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider flex-shrink-0 ${
                         col.isPublished

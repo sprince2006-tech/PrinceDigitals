@@ -222,7 +222,7 @@ export const AdminProductsPage = () => {
       {/* Add / Edit Product Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/40 backdrop-blur-sm animate-fadeIn overflow-y-auto">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-5 sm:p-7 shadow-2xl border border-neutral-200 my-auto max-h-[92vh] overflow-y-auto">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-4 sm:p-6 md:p-7 shadow-2xl border border-neutral-200 my-auto max-h-[90dvh] max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 mb-4 border-b border-neutral-100">
               <div>
                 <h3 className="text-base font-bold text-neutral-900">

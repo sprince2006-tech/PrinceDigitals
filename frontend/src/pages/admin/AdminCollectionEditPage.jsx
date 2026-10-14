@@ -91,7 +91,7 @@ export const AdminCollectionEditPage = () => {
       ) : error ? (
         <ErrorState title="Error Loading Collection" message={error} onRetry={fetchCollection} />
       ) : (
-        <div className="max-w-2xl bg-white rounded-xl border border-neutral-200 p-6 sm:p-8 shadow-xs">
+        <div className="max-w-2xl bg-white rounded-xl border border-neutral-200 p-4 sm:p-6 md:p-8 shadow-xs mb-8">
           <CollectionForm
             initialData={collection}
             onSubmit={handleSubmit}

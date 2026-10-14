@@ -184,13 +184,13 @@ export const ProductForm = ({
       </div>
 
       {/* Form Buttons */}
-      <div className="flex items-center justify-end gap-3 pt-3">
+      <div className="flex flex-wrap items-center justify-end gap-2.5 sm:gap-3 pt-3">
         {onCancel && (
           <button
             type="button"
             onClick={onCancel}
             disabled={isSubmitting}
-            className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 border border-neutral-300 rounded-lg hover:bg-neutral-50 transition-colors"
+            className="flex-1 sm:flex-none px-4 py-2.5 min-h-[42px] text-xs font-semibold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 border border-neutral-300 rounded-lg hover:bg-neutral-50 transition-colors text-center"
           >
             Cancel
           </button>
@@ -198,7 +198,7 @@ export const ProductForm = ({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center justify-center gap-2 py-2 px-5 text-xs uppercase tracking-widest font-semibold rounded-lg bg-neutral-950 text-white hover:bg-neutral-800 transition-all disabled:opacity-50 shadow-sm"
+          className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 py-2.5 px-5 min-h-[42px] text-xs uppercase tracking-widest font-semibold rounded-lg bg-neutral-950 text-white hover:bg-neutral-800 transition-all disabled:opacity-50 shadow-sm text-center"
         >
           {isSubmitting ? (
             <>

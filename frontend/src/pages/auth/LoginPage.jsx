@@ -131,9 +131,9 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-100/70 flex flex-col justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 relative">
+    <div className="min-h-screen min-h-[100dvh] bg-neutral-100/70 flex flex-col justify-center py-6 sm:py-12 px-3 sm:px-6 lg:px-8 relative overflow-y-auto">
       {/* Return to website link */}
-      <div className="mb-4 sm:mb-0 sm:absolute sm:top-6 sm:left-6 max-w-md mx-auto sm:max-w-none w-full sm:w-auto">
+      <div className="mb-3 sm:mb-0 sm:absolute sm:top-6 sm:left-6 max-w-md mx-auto sm:max-w-none w-full sm:w-auto">
         <Link
           to="/"
           className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-neutral-600 hover:text-neutral-950 font-semibold transition-colors py-1.5 px-3 rounded-lg hover:bg-neutral-200/60"
@@ -162,7 +162,7 @@ export const LoginPage = () => {
         </div>
 
         {/* Card Box */}
-        <div className="mt-6 bg-white py-7 px-6 shadow-xl rounded-2xl border border-neutral-200/80 sm:px-9">
+        <div className="mt-5 sm:mt-6 bg-white py-6 sm:py-7 px-4 sm:px-9 shadow-xl rounded-2xl border border-neutral-200/80">
           {/* Tabs: Sign In / Sign Up */}
           <div className="flex rounded-xl bg-neutral-100 p-1 mb-6">
             <button

@@ -150,35 +150,37 @@ export const ProductManager = ({
               </div>
 
               {/* Actions */}
-              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 self-start sm:self-center w-full sm:w-auto justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-neutral-100">
-                {/* Publish Toggle */}
-                {onTogglePublish && (
+              <div className="flex items-center justify-end gap-1.5 sm:gap-2 w-full sm:w-auto pt-2.5 sm:pt-0 border-t sm:border-t-0 border-neutral-100">
+                <div className="flex items-center gap-1 flex-shrink-0 ml-auto">
+                  {/* Publish Toggle */}
+                  {onTogglePublish && (
+                    <button
+                      onClick={() => onTogglePublish(product._id, !product.isPublished)}
+                      className="p-1.5 text-neutral-500 hover:text-neutral-900 rounded-md hover:bg-neutral-100"
+                      title={product.isPublished ? 'Unpublish product' : 'Publish product'}
+                    >
+                      {product.isPublished ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                  )}
+
+                  {/* Edit */}
                   <button
-                    onClick={() => onTogglePublish(product._id, !product.isPublished)}
-                    className="p-1.5 text-neutral-500 hover:text-neutral-900 rounded-md hover:bg-neutral-100"
-                    title={product.isPublished ? 'Unpublish product' : 'Publish product'}
+                    onClick={() => onEdit(product)}
+                    className="p-1.5 text-neutral-600 hover:text-neutral-900 rounded-md hover:bg-neutral-100"
+                    title="Edit product"
                   >
-                    {product.isPublished ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    <Edit className="w-4 h-4" />
                   </button>
-                )}
 
-                {/* Edit */}
-                <button
-                  onClick={() => onEdit(product)}
-                  className="p-1.5 text-neutral-600 hover:text-neutral-900 rounded-md hover:bg-neutral-100"
-                  title="Edit product"
-                >
-                  <Edit className="w-4 h-4" />
-                </button>
-
-                {/* Delete */}
-                <button
-                  onClick={() => setDeleteTarget(product)}
-                  className="p-1.5 text-rose-500 hover:text-rose-700 rounded-md hover:bg-rose-50"
-                  title="Delete product"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
+                  {/* Delete */}
+                  <button
+                    onClick={() => setDeleteTarget(product)}
+                    className="p-1.5 text-rose-500 hover:text-rose-700 rounded-md hover:bg-rose-50"
+                    title="Delete product"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             </div>
           );

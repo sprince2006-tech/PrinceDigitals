@@ -46,9 +46,9 @@ export const AdminLayout = ({ children, title, subtitle, actions }) => {
   ];
 
   return (
-    <div className="h-screen h-[100dvh] bg-neutral-50 flex flex-col md:flex-row overflow-hidden">
-      {/* Mobile Top Header (Fixed at top) */}
-      <header className="md:hidden bg-white border-b border-neutral-200 px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between flex-shrink-0 z-40">
+    <div className="min-h-screen min-h-[100dvh] md:h-screen md:h-[100dvh] bg-neutral-50 flex flex-col md:flex-row md:overflow-hidden">
+      {/* Mobile Top Header (Sticky at top on mobile) */}
+      <header className="sticky top-0 md:hidden bg-white border-b border-neutral-200 px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between flex-shrink-0 z-40">
         <Link to="/admin/dashboard" className="flex items-center gap-2 min-w-0" aria-label="Admin Dashboard">
           <img
             src="/PD_logo.png"
@@ -176,9 +176,9 @@ export const AdminLayout = ({ children, title, subtitle, actions }) => {
         />
       )}
 
-      {/* Main Content Area (Fixed layout with fixed header and scrollable content) */}
-      <main className="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
-        {/* Top bar with title and actions - FIXED AT TOP */}
+      {/* Main Content Area: Natural page flow on mobile, scrollable container on desktop */}
+      <main className="flex-1 flex flex-col min-w-0 md:h-full md:overflow-hidden">
+        {/* Top bar with title and actions */}
         {(title || actions) && (
           <header className="bg-white border-b border-neutral-200/80 px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 flex-shrink-0 z-10">
             <div className="min-w-0 flex-1">
@@ -189,8 +189,8 @@ export const AdminLayout = ({ children, title, subtitle, actions }) => {
           </header>
         )}
 
-        {/* Scrollable Content Viewport */}
-        <div className="flex-1 overflow-y-auto overscroll-contain p-3.5 sm:p-6 lg:p-8">
+        {/* Content Viewport: natural flow on mobile with safe-area bottom clearance, scrollable on desktop */}
+        <div className="flex-1 p-3.5 sm:p-6 lg:p-8 pb-28 sm:pb-16 md:pb-8 md:overflow-y-auto overscroll-contain min-h-0">
           <div className="max-w-6xl w-full mx-auto min-w-0">
             {children}
           </div>

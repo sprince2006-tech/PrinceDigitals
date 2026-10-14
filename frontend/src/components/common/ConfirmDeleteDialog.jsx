@@ -14,8 +14,8 @@ export const ConfirmDeleteDialog = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl border border-neutral-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3.5 sm:p-4 bg-black/40 backdrop-blur-sm animate-fadeIn overflow-y-auto">
+      <div className="bg-white rounded-xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-neutral-200 my-auto max-h-[90dvh] max-h-[90vh] overflow-y-auto">
         <div className="flex items-start justify-between mb-4">
           <div className="w-10 h-10 rounded-full bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-600">
             <AlertTriangle className="w-5 h-5" />

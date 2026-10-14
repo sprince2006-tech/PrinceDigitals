@@ -157,11 +157,11 @@ export const CollectionForm = ({
       </div>
 
       {/* Submit Button */}
-      <div className="pt-2">
+      <div className="pt-4 pb-2">
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 text-xs uppercase tracking-widest font-semibold rounded-lg bg-neutral-950 text-white hover:bg-neutral-800 active:scale-[0.99] transition-all disabled:opacity-50 shadow-sm"
+          className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 min-h-[46px] text-xs uppercase tracking-widest font-semibold rounded-lg bg-neutral-950 text-white hover:bg-neutral-800 active:scale-[0.99] transition-all disabled:opacity-50 shadow-sm"
         >
           {isSubmitting ? (
             <>
