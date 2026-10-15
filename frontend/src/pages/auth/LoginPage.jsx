@@ -13,6 +13,7 @@ import {
   HelpCircle,
   X,
 } from 'lucide-react';
+import { SEO } from '../../components/common/SEO';
 
 export const LoginPage = () => {
   const {
@@ -132,6 +133,11 @@ export const LoginPage = () => {
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-neutral-100/70 flex flex-col justify-center py-6 sm:py-12 px-3 sm:px-6 lg:px-8 relative overflow-y-auto">
+      <SEO
+        title={mode === 'login' ? 'Sign In | Prince Digital' : 'Create Account | Prince Digital'}
+        description="Sign in or register for Prince Digital."
+        noindex={true}
+      />
       {/* Return to website link */}
       <div className="mb-3 sm:mb-0 sm:absolute sm:top-6 sm:left-6 max-w-md mx-auto sm:max-w-none w-full sm:w-auto">
         <Link

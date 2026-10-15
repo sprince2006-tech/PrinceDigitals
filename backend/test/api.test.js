@@ -226,4 +226,22 @@ describe('Prince Digital API Test Suite', () => {
     const authCookie = cookies.find((c) => c.includes('prince_admin_token'));
     assert.ok(authCookie.includes('prince_admin_token=;'));
   });
+
+  test('GET /robots.txt returns plain text with HTTP 200 and sitemap link', async () => {
+    const res = await request(app).get('/robots.txt');
+    assert.equal(res.status, 200);
+    assert.ok(res.headers['content-type'].includes('text/plain'));
+    assert.ok(res.text.includes('Sitemap: https://princedigitals.vercel.app/sitemap.xml'));
+  });
+
+  test('GET /sitemap.xml returns valid XML with HTTP 200 including published collection and excluding drafts', async () => {
+    const res = await request(app).get('/sitemap.xml');
+    assert.equal(res.status, 200);
+    assert.ok(res.headers['content-type'].includes('application/xml') || res.headers['content-type'].includes('text/xml'));
+    assert.ok(res.text.includes('<urlset'));
+    assert.ok(res.text.includes('<loc>https://princedigitals.vercel.app/</loc>'));
+    assert.ok(res.text.includes('<loc>https://princedigitals.vercel.app/collection/peak-formals</loc>'));
+    // Ensure unpublished secret draft collection is strictly excluded
+    assert.ok(!res.text.includes('secret-draft-collection'));
+  });
 });

@@ -8,6 +8,40 @@ import { LoadingState } from '../../components/common/LoadingState';
 import { EmptyState } from '../../components/common/EmptyState';
 import { ErrorState } from '../../components/common/ErrorState';
 import { ShoppingBag, Search } from 'lucide-react';
+import { SEO } from '../../components/common/SEO';
+
+const HOMEPAGE_STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://princedigitals.vercel.app/#website',
+      url: 'https://princedigitals.vercel.app/',
+      name: 'Prince Digital',
+      description:
+        "Discover curated fashion, men's formal wear, streetwear, gym essentials, and handpicked product collections at Prince Digital.",
+      inLanguage: 'en',
+      publisher: {
+        '@id': 'https://princedigitals.vercel.app/#organization',
+      },
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://princedigitals.vercel.app/#organization',
+      name: 'Prince Digital',
+      url: 'https://princedigitals.vercel.app/',
+      logo: {
+        '@type': 'ImageObject',
+        '@id': 'https://princedigitals.vercel.app/#logo',
+        url: 'https://princedigitals.vercel.app/PD_logo.png',
+        caption: 'Prince Digital',
+      },
+      image: {
+        '@id': 'https://princedigitals.vercel.app/#logo',
+      },
+    },
+  ],
+};
 
 export const HomePage = () => {
   const [collections, setCollections] = useState([]);
@@ -29,8 +63,6 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
-    // Dynamic page title & SEO
-    document.title = 'Prince Digital — Discover Products & Shop Collections';
     fetchCollections();
   }, []);
 
@@ -55,6 +87,12 @@ export const HomePage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <SEO
+        title="Prince Digital | Curated Fashion & Product Collections"
+        description="Discover curated fashion, men's formal wear, streetwear, gym essentials, and handpicked product collections at Prince Digital."
+        canonicalUrl="https://princedigitals.vercel.app/"
+        structuredData={HOMEPAGE_STRUCTURED_DATA}
+      />
       <PublicHeader />
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 md:py-12">

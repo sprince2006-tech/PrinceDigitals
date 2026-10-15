@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom';
 import { PublicHeader } from '../../components/public/PublicHeader';
 import { PublicFooter } from '../../components/public/PublicFooter';
 import { ArrowLeft } from 'lucide-react';
+import { SEO } from '../../components/common/SEO';
 
 export const NotFoundPage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <SEO
+        title="Page Not Found | Prince Digital"
+        description="The page you requested could not be found on Prince Digital."
+        noindex={true}
+      />
       <PublicHeader />
       <main className="flex-1 flex flex-col items-center justify-center p-6 text-center max-w-md mx-auto">
         <img

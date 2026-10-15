@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { LoadingState } from '../common/LoadingState';
+import { SEO } from '../common/SEO';
 
 /**
  * Route protection strictly for Administrator routes (/admin/*).
@@ -24,7 +25,12 @@ export const ProtectedRoute = ({ children }) => {
     return <Navigate to="/user/dashboard" replace />;
   }
 
-  return children;
+  return (
+    <>
+      <SEO title="Admin Dashboard | Prince Digital" noindex={true} />
+      {children}
+    </>
+  );
 };
 
 /**
@@ -43,5 +49,10 @@ export const ProtectedUserRoute = ({ children }) => {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return children;
+  return (
+    <>
+      <SEO title="My Account | Prince Digital" noindex={true} />
+      {children}
+    </>
+  );
 };

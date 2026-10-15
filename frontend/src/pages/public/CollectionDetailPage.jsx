@@ -8,6 +8,7 @@ import { LoadingState } from '../../components/common/LoadingState';
 import { EmptyState } from '../../components/common/EmptyState';
 import { ErrorState } from '../../components/common/ErrorState';
 import { ArrowLeft, ShoppingBag } from 'lucide-react';
+import { SEO } from '../../components/common/SEO';
 
 export const CollectionDetailPage = () => {
   const { slug } = useParams();
@@ -25,11 +26,6 @@ export const CollectionDetailPage = () => {
       const res = await publicApi.getCollectionBySlug(slug);
       setCollection(res.data.collection);
       setProducts(res.data.products || []);
-
-      // Dynamic document title
-      if (res.data.collection?.title) {
-        document.title = `${res.data.collection.title} — Prince Digital`;
-      }
     } catch (err) {
       if (err.status === 404) {
         setNotFound(true);
@@ -48,6 +44,10 @@ export const CollectionDetailPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col bg-white">
+        <SEO
+          title="Loading Collection... | Prince Digital"
+          canonicalUrl={`https://princedigitals.vercel.app/collection/${slug}`}
+        />
         <PublicHeader showBack={true} />
         <main className="flex-1 flex items-center justify-center">
           <LoadingState message="Loading collection..." />
@@ -60,6 +60,11 @@ export const CollectionDetailPage = () => {
   if (notFound) {
     return (
       <div className="min-h-screen flex flex-col bg-white">
+        <SEO
+          title="Collection Not Found | Prince Digital"
+          description="The collection you are looking for does not exist or may currently be unpublished."
+          noindex={true}
+        />
         <PublicHeader showBack={true} />
         <main className="flex-1 max-w-md w-full mx-auto px-4 py-16 flex flex-col items-center justify-center text-center">
           <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-400 mb-4 border border-neutral-200">
@@ -85,6 +90,10 @@ export const CollectionDetailPage = () => {
   if (error) {
     return (
       <div className="min-h-screen flex flex-col bg-white">
+        <SEO
+          title="Collection | Prince Digital"
+          noindex={true}
+        />
         <PublicHeader showBack={true} />
         <main className="flex-1 flex items-center justify-center px-4">
           <ErrorState
@@ -98,8 +107,63 @@ export const CollectionDetailPage = () => {
     );
   }
 
+  const collectionTitle = collection?.title
+    ? `${collection.title} | Prince Digital`
+    : 'Prince Digital Collection';
+  const collectionDesc = collection?.description?.trim()
+    ? collection.description.trim()
+    : `Explore handpicked products and curated looks in the ${collection?.title || 'featured'} collection at Prince Digital.`;
+  const canonicalUrl = `https://princedigitals.vercel.app/collection/${collection?.slug || slug}`;
+  const ogImage = collection?.coverImageUrl || 'https://princedigitals.vercel.app/PD_logo.png';
+
+  const collectionStructuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${canonicalUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://princedigitals.vercel.app/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: collection?.title || 'Collection',
+            item: canonicalUrl,
+          },
+        ],
+      },
+      {
+        '@type': 'CollectionPage',
+        '@id': `${canonicalUrl}#webpage`,
+        url: canonicalUrl,
+        name: collectionTitle,
+        description: collectionDesc,
+        isPartOf: {
+          '@type': 'WebSite',
+          '@id': 'https://princedigitals.vercel.app/#website',
+          url: 'https://princedigitals.vercel.app/',
+          name: 'Prince Digital',
+        },
+        inLanguage: 'en',
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <SEO
+        title={collectionTitle}
+        description={collectionDesc}
+        canonicalUrl={canonicalUrl}
+        ogImage={ogImage}
+        ogImageAlt={collection?.title || 'Collection'}
+        structuredData={collectionStructuredData}
+      />
       <PublicHeader showBack={true} />
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">

@@ -1,27 +1,84 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/PD_logo.png?v=2" />
-    <link rel="apple-touch-icon" href="/PD_logo.png?v=2" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-    <title>Prince Digital — Discover Products & Shop Collections</title>
-    <meta name="description" content="Discover curated fashion collections and shopping links from Prince Digital." />
-    
-    <!-- Open Graph / Meta -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Prince Digital — Curated Product Catalog" />
-    <meta property="og:description" content="Discover curated fashion collections and shop your favourites directly." />
-    <meta property="og:image" content="/PD_logo.png" />
-    <meta name="theme-color" content="#ffffff" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-white text-brand-950 font-sans antialiased selection:bg-brand-950 selection:text-white min-h-screen">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/PD_logo.png?v=2" />
+  <link rel="apple-touch-icon" href="/PD_logo.png?v=2" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <title>Prince Digital | Curated Fashion & Product Collections</title>
+  <meta name="description"
+    content="Discover curated fashion, men's formal wear, streetwear, gym essentials, and handpicked product collections at Prince Digital." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://princedigitals.vercel.app/" />
+  <meta name="google-site-verification" content="ddF927FyzcZ_fsx9bpU18qlNOafFar2ctaAlMiPp0h0" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Prince Digital" />
+  <meta property="og:title" content="Prince Digital | Curated Fashion & Product Collections" />
+  <meta property="og:description"
+    content="Discover curated fashion, men's formal wear, streetwear, gym essentials, and handpicked product collections at Prince Digital." />
+  <meta property="og:url" content="https://princedigitals.vercel.app/" />
+  <meta property="og:image" content="https://princedigitals.vercel.app/PD_logo.png" />
+  <meta property="og:image:alt" content="Prince Digital Logo" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Prince Digital | Curated Fashion & Product Collections" />
+  <meta name="twitter:description"
+    content="Discover curated fashion, men's formal wear, streetwear, gym essentials, and handpicked product collections at Prince Digital." />
+  <meta name="twitter:image" content="https://princedigitals.vercel.app/PD_logo.png" />
+  <meta name="twitter:image:alt" content="Prince Digital Logo" />
+
+  <!-- Structured Data (JSON-LD) for Search Engines -->
+  <script type="application/ld+json" id="seo-json-ld">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://princedigitals.vercel.app/#website",
+          "url": "https://princedigitals.vercel.app/",
+          "name": "Prince Digital",
+          "description": "Discover curated fashion, men's formal wear, streetwear, gym essentials, and handpicked product collections at Prince Digital.",
+          "inLanguage": "en",
+          "publisher": {
+            "@id": "https://princedigitals.vercel.app/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://princedigitals.vercel.app/#organization",
+          "name": "Prince Digital",
+          "url": "https://princedigitals.vercel.app/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://princedigitals.vercel.app/#logo",
+            "url": "https://princedigitals.vercel.app/PD_logo.png",
+            "caption": "Prince Digital"
+          },
+          "image": {
+            "@id": "https://princedigitals.vercel.app/#logo"
+          }
+        }
+      ]
+    }
+    </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="bg-white text-brand-950 font-sans antialiased selection:bg-brand-950 selection:text-white min-h-screen">
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

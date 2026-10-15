@@ -12,6 +12,8 @@ const { apiLimiter } = require('./middleware/rateLimiter');
 const { isDbConnected } = require('./config/db');
 const { ensureDbConnected } = require('./middleware/dbCheck');
 
+const { getSitemapXml, getRobotsTxt } = require('./controllers/seoController');
+
 const app = express();
 
 // 1. Trust proxy if running behind reverse proxy like Render / Heroku
@@ -80,7 +82,11 @@ app.get('/health', (req, res) => {
   });
 });
 
-// 8. General API Rate Limiting & API v1 Routes (with DB readiness check)
+// 8. SEO Crawler Endpoints (Dynamic XML Sitemap & robots.txt)
+app.get('/sitemap.xml', ensureDbConnected, getSitemapXml);
+app.get('/robots.txt', getRobotsTxt);
+
+// 9. General API Rate Limiting & API v1 Routes (with DB readiness check)
 app.use('/api/v1', ensureDbConnected, apiLimiter, routes);
 
 // 8. 404 handler for undefined routes
